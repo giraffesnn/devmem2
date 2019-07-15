@@ -5,7 +5,10 @@ physical addresses.
 The "/dev/mem" node is not found in the default andorid system.Please enable the
 CONFIG_DEVMEM option in android linux kernel.The CONFIG_DEVMEM option is used to
 control whether to create the "/dev/mem" node. More details can be found in
-"kernel/drivers/char/mem.c"
+"kernel/drivers/char/mem.c".
+  
+NOTE: The DEVKMEM option is not supported on arm64. On arm64, VMALLOC_START <
+PAGE_OFFSET, which confuses kmem read/write.   
 
 2. How to compile  
 Enter the devmem2 source directory:  
