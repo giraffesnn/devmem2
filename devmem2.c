@@ -69,7 +69,7 @@ int main(int argc, char **argv) {
 	if(argc < 2) {
 		fprintf(stderr, "\nUsage:\t%s { address } [ type [ data ] ]\n"
 			"\taddress : memory address to act upon\n"
-			"\ttype    : access operation type : [b]yte, [h]alfword, [w]ord\n"
+			"\ttype    : access operation type : [b]yte, [h]alfword, [w]ord, [l]ong\n"
 			"\tdata    : data to be written\n\n",
 			argv[0]);
 		exit(1);
@@ -103,6 +103,11 @@ int main(int argc, char **argv) {
 			read_result = *((unsigned short *) virt_addr);
 			break;
 		case 'w':
+			data_size = sizeof(unsigned int);
+			virt_addr = fixup_addr(virt_addr, data_size);
+			read_result = *((unsigned int *) virt_addr);
+			break;
+        case 'l':
 			data_size = sizeof(unsigned long);
 			virt_addr = fixup_addr(virt_addr, data_size);
 			read_result = *((unsigned long *) virt_addr);
@@ -129,6 +134,11 @@ int main(int argc, char **argv) {
 				read_result = *((unsigned short *) virt_addr);
 				break;
 			case 'w':
+				virt_addr = fixup_addr(virt_addr, sizeof(unsigned int));
+				*((unsigned int *) virt_addr) = write_val;
+				read_result = *((unsigned int *) virt_addr);
+				break;
+            case 'l':
 				virt_addr = fixup_addr(virt_addr, sizeof(unsigned long));
 				*((unsigned long *) virt_addr) = write_val;
 				read_result = *((unsigned long *) virt_addr);
