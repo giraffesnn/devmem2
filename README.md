@@ -12,7 +12,7 @@ PAGE_OFFSET, which confuses kmem read/write.
 
 2. How to compile  
 Enter the devmem2 source directory:  
-$ cd ${MY_ANDROID}  
+$ cd ${MY_ANDROID}/external
 $ git clone https://github.com/giraffesnn/devmem2.git  
 $ source build/envsetup.sh  
 $ lunch # Choose the platform/board  
