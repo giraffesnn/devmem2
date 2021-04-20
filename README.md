@@ -7,8 +7,10 @@ CONFIG_DEVMEM option in android linux kernel.The CONFIG_DEVMEM option is used to
 control whether to create the "/dev/mem" node. More details can be found in
 "kernel/drivers/char/mem.c".
   
-NOTE: The DEVKMEM option is not supported on arm64. On arm64, VMALLOC_START <
-PAGE_OFFSET, which confuses kmem read/write.   
+NOTE1: The DEVKMEM option is not supported on arm64. On arm64, VMALLOC_START <
+PAGE_OFFSET, which confuses kmem read/write.  
+NOTE2: [Operation not permitted], if you get this error, please disable CONFIG_STRICT_DEVMEM   
+and CONFIG_IO_STRICT_DEVMEM option.  
 
 2. How to compile  
 Enter the devmem2 source directory:  
