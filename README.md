@@ -18,7 +18,5 @@ $ cd ${MY_ANDROID}/external
 $ git clone https://github.com/giraffesnn/devmem2.git  
 $ source build/envsetup.sh  
 $ lunch # Choose the platform/board  
-$ cd devmem2  
-$ mm
-
-
+$ mmm external/devmem2  
+$ make snod # make system.img ignoring depencies  
